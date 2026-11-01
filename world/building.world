@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='utf-8'?>
+<sdf version="1.6">
+  <world name="default">
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <model name="building_1f">
+      <static>true</static>
+      <link name="wall_01">
+        <pose>2.5 -5.0 1.0 0 0 0.0</pose>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>15.0 0.1 2.0</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>15.0 0.1 2.0</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+      <link name="wall_02">
+        <pose>10.0 2.5 1.0 0 0 1.5707963267948966</pose>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>15.0 0.1 2.0</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>15.0 0.1 2.0</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+      <link name="wall_03">
+        <pose>2.5 10.0 1.0 0 0 3.141592653589793</pose>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>15.0 0.1 2.0</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>15.0 0.1 2.0</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+      <link name="wall_04">
+        <pose>-5.0 2.5 1.0 0 0 -1.5707963267948966</pose>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>15.0 0.1 2.0</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>15.0 0.1 2.0</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+      <link name="floor_01">
+        <pose>47.5 47.5 -0.05 0 0 0</pose>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>105.0 105.0 0.1</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>105.0 105.0 0.1</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+      <gravity>0 0 -9.8</gravity>
+    </model>
+  </world>
+</sdf>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <!-- robot localization -->
+
+ 
+
+    <!-- 2. cartographer -->
+    <!-- <include file="$(find robot_simulation)/launch/localization/cartographer.launch">
+    </include> -->
+
+    <!-- 3. rtabmap -->
+    <!-- <include file="$(find robot_simulation)/launch/localization/rtabmap.launch">
+    </include> -->
+
+
+
+    
+    
+</launch>

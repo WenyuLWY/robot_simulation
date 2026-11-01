@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <!-- 1. sim localizaiton -->
+  <node pkg="robot_simulation" type="localization_sim" name="localization_sim_node" output="screen">
+    <param name="laserCloudTopic"           value="/velodyne_points"/>
+    <param name="robotName"                 value="scout"/>
+    <param name="publishTF"                 value="true"/>
+  </node>
+  <node pkg="tf2_ros" type="static_transform_publisher" name="mappingPublisher"  args="0 0 0 0 0 0 map odom"/>
+
+  <!-- mapping -->
+  <node pkg="octomap_server" type="octomap_server_node" name="octomap_server" output="screen">
+    <param name="resolution" value="0.05"/>
+    <param name="frame_id" value="map"/>
+    <param name="base_frame_id" value="dummy_base_link"/>
+    <param name="sensor_model/max_range" value="20.0"/>
+    <remap from="cloud_in" to="/velodyne_points"/>
+    <param name="occupancy_min_z" value="0.15"/>
+    <param name="occupancy_max_z" value="1.0"/>
+    <remap from="projected_map" to="/map"/>
+  </node>
+
+  <!-- This is to just to visualize the localization trajectory -->
+  <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="hector_trajectory_server" output="screen">
+      <param name="target_frame_name" type="string" value="map" />
+      <param name="source_frame_name" type="string" value="base_link" />
+      <param name="trajectory_update_rate" type="double" value="5.0" />
+      <param name="trajectory_publish_rate" type="double" value="5.0" />
+  </node>
+
+</launch>

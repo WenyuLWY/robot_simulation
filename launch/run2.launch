@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<launch>
+
+
+  <include file="$(find robot_simulation)/launch/robot_environment.launch">
+  </include>
+
+  <include file="$(find robot_simulation)/launch/run2_localization.launch">
+  </include>
+
+  <include file="$(find robot_simulation)/launch/run2_planning.launch">
+  </include>
+
+</launch>

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<launch>
+
+
+  <!-- 2. path planning (move_base) -->
+
+  <arg name="raw_cloud_topic"            default="/velodyne_points"/> 
+  <arg name="target_frame"               default="velodyne"/> 
+  <arg name="no_static_map"              default="false"/>
+
+   <!-- the height bewteen lidar to footprint is 0.541m. -->
+  <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan">
+    <param name="min_height" value="-0.1"/>
+    <param name="max_height " value="0.1"/>
+    <param name="target_frame" value="$(arg target_frame)"/> 
+    <param name ="concurrency_level" value="1"/>
+    <remap from="cloud_in" to="$(arg raw_cloud_topic)"/>
+    <remap from="scan" to="/scan_2d"/>
+  </node>
+
+
+ <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="log">
+    <!-- use navfn/NavfnROS or global_planner/GlobalPlanner -->
+    <param name="base_global_planner" value="navfn/NavfnROS"/>
+    <!-- use dwa_local_planner/DWAPlannerROS or teb_local_planner/TebLocalPlannerROS"/>  -->
+    <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS"/>  
+    <param name="global_frame_id" value="map" />
+    <param name="odom_frame_id" value="odom" />
+    <param name="base_frame_id" value="dummy_base_link" />
+    <rosparam file="$(find robot_simulation)/config/move_base/planner.yaml" command="load"/>
+    <!-- observation sources located in costmap_common.yaml -->
+    <rosparam file="$(find robot_simulation)/config/move_base/costmap_common.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find robot_simulation)/config/move_base/costmap_common.yaml" command="load" ns="local_costmap" />
+
+    <!-- local costmap, needs size -->
+    <rosparam file="$(find robot_simulation)/config/move_base/costmap_local.yaml" command="load" ns="local_costmap" />
+
+    <!-- static global costmap, static map provides size -->
+    <rosparam file="$(find robot_simulation)/config/move_base/costmap_global_static.yaml" command="load" ns="global_costmap" unless="$(arg no_static_map)"/>
+    
+  </node>
+
+
+</launch>
