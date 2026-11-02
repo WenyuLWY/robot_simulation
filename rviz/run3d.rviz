@@ -15,7 +15,6 @@ Panels:
   - Class: rviz/Tool Properties
     Expanded:
       - /Interact1
-      - /2D Nav Goal1
       - /Waypoint1
     Name: Tool Properties
     Splitter Ratio: 0.5886790156364441
@@ -399,7 +398,7 @@ Visualization Manager:
           Use Fixed Frame: true
           Use rainbow: true
           Value: false
-      Enabled: true
+      Enabled: false
       Name: 2d
     - Class: rviz/Group
       Displays:
@@ -506,7 +505,7 @@ Visualization Manager:
             {}
           Queue Size: 100
           Value: true
-      Enabled: false
+      Enabled: true
       Name: 3d
   Enabled: true
   Global Options:
@@ -522,8 +521,6 @@ Visualization Manager:
     - Class: rviz/Select
     - Class: rviz/FocusCamera
     - Class: rviz/Measure
-    - Class: rviz/SetGoal
-      Topic: /move_base_simple/goal
     - Class: rviz/WaypointTool
       Topic: waypoint
   Value: true
@@ -538,17 +535,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: -2.42885422706604
-        Y: 1.8550984859466553
+        X: -2.4444315433502197
+        Y: 1.8623504638671875
         Z: 9.788439456315245e-06
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.4947963953018188
+      Pitch: 1.2997965812683105
       Target Frame: base_link
-      Yaw: 2.702254056930542
+      Yaw: 2.7372543811798096
     Saved: ~
 Window Geometry:
   Displays:
@@ -568,5 +565,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1386
-  X: 303
-  Y: 77
+  X: 196
+  Y: 97
